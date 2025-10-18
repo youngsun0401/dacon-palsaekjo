@@ -13,6 +13,38 @@ DACON - 운수종사자 인지적 특성 데이터를 활용한 교통사고 위
 
 
 
+## 공유
+
+### Google Drive
+
+1. [공유폴더 링크](https://drive.google.com/drive/folders/1q0Kx5ZGL7Uci7Uh_bifeqtWb30pUNIqm?usp=drive_link)에 들어간다. 이후 내 구글 드라이브의 \[공유 문서함\]에 이 폴더가 생긴다.
+
+2. 그 폴더 우클릭 \> 정리 \> 바로가기 추가
+
+3. 내 구글 드라이브에서 원하는 폴더를 선택한다. 선택된 폴더에 이 공유폴더의 바로가기가 추가된다. 현재 학습, 추론 코드에 적힌 경로는 `/shared-acorn`이다.
+
+4. 이후 코랩에서 구글 드라이브에 마운트하면 이 공유폴더에 접근할 수 있다.
+
+```
+from google.colab import drive
+drive.mount('/content/drive')
+
+import os
+os.chdir('/content/drive/MyDrive/{ 바로가기 추가에서 선택된 폴더 경로 }/dacon-palsaekjo-shared')
+```
+
+
+
+### GitHub
+
+[깃허브 링크](https://github.com/youngsun0401/dacon-palsaekjo)
+
+큰 데이터파일은 안 올라갈 뿐 아니라 ipynb 파일은 출력 때문에 git으로 공유하기 번잡하므로 코드 및 데이터 공유 목적은 아니고 간단히 형상관리 간단하게만 할까 함.
+
+
+
+
+
 ## 소스코드 현상황
 
 DACON에서 제공한 학습, 추론 코드가 루트 디렉토리에 있다. 그 두 코드에서 공통 부분을 분리해서 mymodules에 넣었다.
