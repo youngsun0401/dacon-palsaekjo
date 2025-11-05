@@ -1,7 +1,7 @@
 import os
 
 class Paths:
-    def __init__(self, base="open_dev", *, model_name: str="lgbm"):
+    def __init__(self, base=".", *, model_name: str="lgbm"):
         self.base = base
         os.makedirs(base, exist_ok=True)
 
