@@ -27,10 +27,10 @@ DACON - 운수종사자 인지적 특성 데이터를 활용한 교통사고 위
 
 ### submit 생성
 
-`submit.py` 파일을 실행한다.
+`create_submit.py` 파일을 실행한다.
 
 ```
-python submit.py
+python create_submit.py
 ```
 
 실행하면 제출에 필요한 `submit.zip` 파일이 생성된다.
@@ -100,7 +100,7 @@ os.chdir('/content/drive/MyDrive/{ 바로가기 추가에서 선택된 폴더 �
 
 ### 소스코드 상태
 
-`1.학습.ipynb`, `2.추론.ipynb`, `script.py`는 바로 실행가능하다.
+`1.학습.ipynb`, `2.추론.ipynb`는 baseline의 코드 복붙을 기반으로 수정된 것이다. 바로 실행가능하다.
 
 DACON에서 제공한 학습, 추론 코드가 루트 디렉토리에 있다. 그 두 코드에서 공통 부분을 분리해서 mymodules에 넣었다.
 
