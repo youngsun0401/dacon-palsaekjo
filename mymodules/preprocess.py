@@ -197,6 +197,8 @@ def preprocess_A(train_A: pd.DataFrame) -> pd.DataFrame:
     # 4️⃣ 변동성 (A6 내 각 시도 간 일관성 지표)
     feats["A6_var"] = np.nanstd(A6_arr, axis=1)
 
+    df["A6-1"] = df["A6-1"].astype(int)
+
 
 # ---------------------------------------> A6 추가된 심화 feature 설명 <-------------------------------------
 
