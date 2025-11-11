@@ -76,9 +76,10 @@ def add_features_B(df: pd.DataFrame) -> pd.DataFrame:
         feats["YearMonthIndex"] = feats["Year"] * 12 + feats["Month"]
 
     # 1) 속도-정확도 트레이드오프 (B1~B5)
+    # 반응속도를 정확도로 나눈다.
     for k, acc_col, rt_col in [
-        ("B1", "B1_acc_task1", "B1_rt_mean"),
-        ("B2", "B2_acc_task1", "B2_rt_mean"),
+        ("B1", "B1_acc_task1", "B1_rt_mean"), # XXX ??? B1의 반응시간은 과제2의 데이터라메?
+        ("B2", "B2_acc_task1", "B2_rt_mean"), # XXX ??? B2의 반응시간은 과제2의 데이터라메?
         ("B3", "B3_acc_rate",  "B3_rt_mean"),
         ("B4", "B4_acc_rate",  "B4_rt_mean"),
         ("B5", "B5_acc_rate",  "B5_rt_mean"),

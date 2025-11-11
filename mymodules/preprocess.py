@@ -256,17 +256,28 @@ def preprocess_B(train_B: pd.DataFrame) -> pd.DataFrame:
 
     feats = pd.DataFrame(index=df.index)
 
+    '''
+    B1, B2 검사의 설명이 완전히 같다.
+
+    (1) 1번 과제의 1: 정답 / 2: 오답
+    (2) 2번 과제의 응답시간(초)
+    (3) 2번 과제의
+      - 1: 문제의 색 바뀜, 정답
+      - 2: 문제의 색 바뀜, 오답
+      - 3: 문제의 색 안 바뀜, 정답
+      - 4: 문제의 색 안 바뀜, 오답
+    '''
     print("Step 2: B1 feature 생성...")
-    feats["B1_acc_task1"] = seq_rate(df["B1-1"], "1")
-    feats["B1_rt_mean"]   = seq_mean(df["B1-2"])
-    feats["B1_rt_std"]    = seq_std(df["B1-2"])
-    feats["B1_acc_task2"] = seq_rate(df["B1-3"], "1")
+    feats["B1_acc_task1"] = seq_rate(df["B1-1"], "1") # 과제1 정확도
+    feats["B1_rt_mean"]   = seq_mean(df["B1-2"])      # 과제2 반응속도 평균
+    feats["B1_rt_std"]    = seq_std(df["B1-2"])       # 과제2 반응속도 표준편차
+    feats["B1_acc_task2"] = seq_rate(df["B1-3"], "1") # 과제2 정확도
 
     print("Step 3: B2 feature 생성...")
-    feats["B2_acc_task1"] = seq_rate(df["B2-1"], "1")
-    feats["B2_rt_mean"]   = seq_mean(df["B2-2"])
-    feats["B2_rt_std"]    = seq_std(df["B2-2"])
-    feats["B2_acc_task2"] = seq_rate(df["B2-3"], "1")
+    feats["B2_acc_task1"] = seq_rate(df["B2-1"], "1") # 과제1 정확도
+    feats["B2_rt_mean"]   = seq_mean(df["B2-2"])      # 과제2 반응속도 평균
+    feats["B2_rt_std"]    = seq_std(df["B2-2"])       # 과제2 반응속도 표준편차
+    feats["B2_acc_task2"] = seq_rate(df["B2-3"], "1") # 과제2 정확도
 
     print("Step 4: B3 feature 생성...")
     feats["B3_acc_rate"] = seq_rate(df["B3-1"], "1")
