@@ -83,9 +83,9 @@ def preprocess_A(train_A: pd.DataFrame) -> pd.DataFrame:
     feats["A3_rt_mean"]    = seq_mean(df["A3-7"])
     feats["A3_rt_std"]     = seq_std(df["A3-7"])
     feats["A3_rt_size_diff"] = masked_mean_from_csv_series(df["A3-1"], df["A3-7"], 1) - \
-                               masked_mean_from_csv_series(df["A3-1"], df["A3-7"], 2)
+                               masked_mean_from_csv_series(df["A3-1"], df["A3-7"], 2)# 작은/큰 경우 평균 반응속도 차이
     feats["A3_rt_side_diff"] = masked_mean_from_csv_series(df["A3-3"], df["A3-7"], 1) - \
-                               masked_mean_from_csv_series(df["A3-3"], df["A3-7"], 2)
+                               masked_mean_from_csv_series(df["A3-3"], df["A3-7"], 2)# 왼/오른 경우 평균 반응속도 차이
 
     print("Step 5: A4 feature 생성...")
     feats["A4_acc_rate"]   = seq_rate(df["A4-3"], "1")
