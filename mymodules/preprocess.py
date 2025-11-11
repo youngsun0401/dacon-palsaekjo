@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from .preprocess_util import convert_age, split_testdate, seq_mean, seq_std, seq_rate, masked_mean_from_csv_series, masked_mean_in_set_series
+from .preprocess_util import convert_age, split_testdate, seq_mean, seq_std, seq_rate, seq_skew, masked_mean_from_csv_series, masked_mean_in_set_series
 
 tqdm.pandas()
 
@@ -272,12 +272,14 @@ def preprocess_B(train_B: pd.DataFrame) -> pd.DataFrame:
     feats["B1_rt_mean"]   = seq_mean(df["B1-2"])      # 과제2 반응속도 평균
     feats["B1_rt_std"]    = seq_std(df["B1-2"])       # 과제2 반응속도 표준편차
     feats["B1_acc_task2"] = seq_rate(df["B1-3"], "1") # 과제2 정확도
+    feats["B1_rt_skew"]   = seq_skew(df["B1-2"])      # 반응속도의 왜도
 
     print("Step 3: B2 feature 생성...")
     feats["B2_acc_task1"] = seq_rate(df["B2-1"], "1") # 과제1 정확도
     feats["B2_rt_mean"]   = seq_mean(df["B2-2"])      # 과제2 반응속도 평균
     feats["B2_rt_std"]    = seq_std(df["B2-2"])       # 과제2 반응속도 표준편차
     feats["B2_acc_task2"] = seq_rate(df["B2-3"], "1") # 과제2 정확도
+    feats["B2_rt_skew"]   = seq_skew(df["B2-2"])      # 반응속도의 왜도
 
     print("Step 4: B3 feature 생성...")
     feats["B3_acc_rate"] = seq_rate(df["B3-1"], "1")

@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from scipy.stats import skew
 
 def convert_age(val):
     """
@@ -81,6 +82,20 @@ def seq_rate(series, target="1"):
     """
     return series.fillna("").progress_apply(
         lambda x: str(x).split(",").count(target) / len(x.split(",")) if x else np.nan
+    )
+
+def seq_skew(series, target="1"):
+    """
+    콤마로 구분된 수열 문자열 시리즈에 대해 각 행의 왜도를 계산합니다.
+
+    Args:
+        series: 문자열 시리즈 (예: "1.0,2.0,3.0")
+
+    Returns:
+        pd.Series: 각 행의 왜도 (인덱스 보존)
+    """
+    return series.fillna("").progress_apply(
+        lambda x: skew(np.fromstring(x, sep=",")) if x else np.nan
     )
 
 def masked_mean_from_csv_series(cond_series, val_series, mask_val):
