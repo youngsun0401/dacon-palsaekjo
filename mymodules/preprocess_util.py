@@ -41,7 +41,7 @@ def split_testdate(val):
 def seq_mean(series):
     """
     콤마로 구분된 수열 문자열 시리즈에 대해 각 행의 평균을 계산합니다.
-    빈 문자열 또는 결측은 np.nan으로 처리합니다. tqdm 진행바를 사용합니다.
+    빈 문자열 또는 결측은 np.nan으로 처리합니다.
 
     Args:
         series: 문자열 시리즈 (예: "1.0,2.0,3.0")
@@ -49,14 +49,14 @@ def seq_mean(series):
     Returns:
         pd.Series: 각 행의 평균값 (인덱스 보존)
     """
-    return series.fillna("").progress_apply(
+    return series.fillna("").apply(
         lambda x: np.fromstring(x, sep=",").mean() if x else np.nan
     )
 
 def seq_std(series):
     """
     콤마로 구분된 수열 문자열 시리즈에 대해 각 행의 표준편차(std)를 계산합니다.
-    빈 문자열 또는 결측은 np.nan으로 처리합니다. tqdm 진행바를 사용합니다.
+    빈 문자열 또는 결측은 np.nan으로 처리합니다.
 
     Args:
         series: 문자열 시리즈 (예: "1.0,2.0,3.0")
@@ -64,7 +64,7 @@ def seq_std(series):
     Returns:
         pd.Series: 각 행의 표준편차 (인덱스 보존)
     """
-    return series.fillna("").progress_apply(
+    return series.fillna("").apply(
         lambda x: np.fromstring(x, sep=",").std() if x else np.nan
     )
 
@@ -80,7 +80,7 @@ def seq_rate(series, target="1"):
     Returns:
         pd.Series: 각 행에 대한 target 비율 (인덱스 보존)
     """
-    return series.fillna("").progress_apply(
+    return series.fillna("").apply(
         lambda x: str(x).split(",").count(target) / len(x.split(",")) if x else np.nan
     )
 
@@ -94,7 +94,7 @@ def seq_skew(series, target="1"):
     Returns:
         pd.Series: 각 행의 왜도 (인덱스 보존)
     """
-    return series.fillna("").progress_apply(
+    return series.fillna("").apply(
         lambda x: skew(np.fromstring(x, sep=",")) if x else np.nan
     )
 

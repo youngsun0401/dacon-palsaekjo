@@ -1,9 +1,7 @@
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 from .preprocess_util import convert_age, split_testdate, seq_mean, seq_std, seq_rate, seq_skew, masked_mean_from_csv_series, masked_mean_in_set_series
 
-tqdm.pandas()
 
 
 def preprocess_A(train_A: pd.DataFrame) -> pd.DataFrame:
