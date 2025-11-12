@@ -1,5 +1,7 @@
 import os
 
+COLS_TO_DROP = ["Test","PrimaryKey","Age","TestDate"]
+
 class Paths:
     def __init__(self, base=".", *, model_name: str="lgbm"):
         self.base = base
